@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ CategoryController::class, 'index' ]);
+Route::get('/', [ ProductsController::class, 'index' ])->name('products.index');
+
+Route::get('/add-product', [ ProductsController::class, 'create' ])->name('products.create');
+
+Route::post('/add-product', [ ProductsController::class, 'store' ])->name('products.store');

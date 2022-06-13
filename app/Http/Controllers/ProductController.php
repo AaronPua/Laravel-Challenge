@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the products.
@@ -44,16 +44,20 @@ class ProductsController extends Controller
             'name' => 'required',
             'price' => 'required|numeric',
             'category' => 'required|numeric',
+            'active' => 'required|boolean',
         ]);
 
         $product = Product::create([
             'name' => $validatedData['name'],
             'price' => $validatedData['price'],
-            'active' => 1
+            'active' => $validatedData['active']
         ]);
 
         $category = Category::findOrFail($validatedData['category']);
-        $category->products()->syncWithPivotValues([$product->id], ['active' => 1]);
+
+        // Laravel 9.x: syncWithPivotValues($ids, array $values, bool $detaching = true)
+        // Explicitly set the third argument to false to prevent earlier entries from being detached.
+        $category->products()->syncWithPivotValues([ $product->id ], [ 'active' => $validatedData['active'] ], false);
 
         return redirect()->route('products.index')->with('success', $product->name . ' has been added to ' . $category->name . '.');
     }

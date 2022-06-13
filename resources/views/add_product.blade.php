@@ -36,13 +36,13 @@
 
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
-                    <div class="grid grid-cols-6 gap-6">
-                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <div class="grid grid-cols-8 gap-8">
+                        <div class="col-span-8 sm:col-span-8 lg:col-span-2">
                             <label for="name" class="block text-sm font-medium text-gray-700">{{ __('products.add_products.name') }}</label>
                             <input required type="text" id="name" name="name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
 
-                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                        <div class="col-span-8 sm:col-span-8 lg:col-span-2">
                             <label for="price" class="block text-sm font-medium text-gray-700">{{ __('products.add_products.price') }}</label>
                             <div class="mt-1 flex rounded-md shadow-sm">
                                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> $ </span>
@@ -50,12 +50,20 @@
                             </div>
                         </div>
 
-                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                        <div class="col-span-8 sm:col-span-8 lg:col-span-2">
                             <label for="category" class="block text-sm font-medium text-gray-700">{{ __('products.add_products.category') }}</label>
                             <select required type="text" id="category" name="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @foreach ($categories as $category)
                                     <option value='{{ $category->id }}'>{{ $category->name }}</option>
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-span-8 sm:col-span-8 lg:col-span-2">
+                            <label for="active" class="block text-sm font-medium text-gray-700">{{ __('products.add_products.active') }}</label>
+                            <select required type="text" id="active" name="active" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option value='1'>{{ __('products.add_products.active_yes') }}</option>
+                                <option value='0'>{{ __('products.add_products.active_no') }}</option>
                             </select>
                         </div>
                     </div>

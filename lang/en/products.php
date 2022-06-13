@@ -27,6 +27,9 @@ return [
         'name' => 'Name',
         'price' => 'Price',
         'category' => 'Category',
+        'active' => 'Active',
+        'active_yes' => 'Yes',
+        'active_no' => 'No',
         'button_add_product' => 'Add',
     ]
 ];
